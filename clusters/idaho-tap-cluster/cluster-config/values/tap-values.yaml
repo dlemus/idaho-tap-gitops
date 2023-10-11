@@ -12,10 +12,7 @@ tap_install:
     shared:
       ingress_domain: "k8s.demo"
 
-      ca_cert_data: | # To be passed if using custom certificates.
-          -----BEGIN CERTIFICATE-----
-          MIIFXzCCA0egAwIBAgIJAJYm37SFocjlMA0GCSqGSIb3DQEBDQUAMEY...
-          -----END CERTIFICATE-----
+      #ca_cert_data: | # To be passed if using custom certificates.
 
     ceip_policy_disclosed: true # Installation fails if this is not set to true. Not a string.
 
