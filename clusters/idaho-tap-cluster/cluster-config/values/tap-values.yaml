@@ -6,7 +6,7 @@ tap_install:
     profile: full
 
     shared:
-      ingress_domain: "INGRESS-DOMAIN"
+      ingress_domain: "k8s.demo"
 
       ca_cert_data: | # To be passed if using custom certificates.
           -----BEGIN CERTIFICATE-----
@@ -47,16 +47,16 @@ tap_install:
               target: https://GIT-CATALOG-URL/catalog-info.yaml
 
     metadata_store:
-      ns_for_export_app_cert: "MY-DEV-NAMESPACE"
+      #ns_for_export_app_cert: "MY-DEV-NAMESPACE"
       app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
 
     scanning:
       metadataStore:
         url: "" # Configuration is moved, so set this string to empty.
 
-    grype:
-      namespace: "MY-DEV-NAMESPACE"
-      targetImagePullSecret: "TARGET-REGISTRY-CREDENTIALS-SECRET"
+    #grype:
+    #  namespace: "MY-DEV-NAMESPACE"
+    #  targetImagePullSecret: "TARGET-REGISTRY-CREDENTIALS-SECRET"
 
     policy:
       tuf_enabled: false # By default, TUF initialization and keyless verification are deactivated.
