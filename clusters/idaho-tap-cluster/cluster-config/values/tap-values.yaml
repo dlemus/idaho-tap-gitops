@@ -24,18 +24,15 @@ tap_install:
     ootb_supply_chain_basic: # Based on supply_chain set above, can be changed to ootb_supply_chain_testing, ootb_supply_chain_testing_scanning.
       registry:
         server: "harbor.kal.automatestuff.io" # Takes the value from shared section above by default, but can be overridden by setting a different value.
-        repository: "idaho" # Takes the value from shared section above by default, but can be overridden by setting a different value.
+        repository: "idaho/supply-chain" # Takes the value from shared section above by default, but can be overridden by setting a different value.
       gitops:
-        ssh_secret: "SSH-SECRET-KEY" # Takes "" as value by default; but can be overridden by setting a different value.
+        ssh_secret: "" # Takes "" as value by default; but can be overridden by setting a different value.
 
     contour:
       envoy:
         service:
           type: ClusterIP # This is set by default, but can be overridden by setting a different value.
-
-    buildservice:
-      kp_default_repository: "idaho"
-
+      
     tap_gui:
       service_type: ClusterIP
       ingressEnabled: "true"
@@ -44,19 +41,19 @@ tap_install:
         catalog:
           locations:
             - type: url
-              target: https://GIT-CATALOG-URL/catalog-info.yaml
+              target: https://github.com/dlemus/tap-catalog/blob/master/catalog-info.yaml
 
     metadata_store:
-      #ns_for_export_app_cert: "MY-DEV-NAMESPACE"
+      ns_for_export_app_cert: "tap-apps"
       app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
 
     scanning:
       metadataStore:
         url: "" # Configuration is moved, so set this string to empty.
 
-    #grype:
-    #  namespace: "MY-DEV-NAMESPACE"
-    #  targetImagePullSecret: "TARGET-REGISTRY-CREDENTIALS-SECRET"
+    grype:
+      namespace: "default"
+      targetImagePullSecret: "harbor-registry-creds"
 
     policy:
       tuf_enabled: false # By default, TUF initialization and keyless verification are deactivated.
