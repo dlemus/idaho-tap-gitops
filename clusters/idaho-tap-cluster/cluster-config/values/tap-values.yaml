@@ -34,9 +34,7 @@ tap_install:
           type: ClusterIP # This is set by default, but can be overridden by setting a different value.
 
     buildservice:
-      kp_default_repository: "KP-DEFAULT-REPO"
-      kp_default_repository_username: "KP-DEFAULT-REPO-USERNAME"
-      kp_default_repository_password: "KP-DEFAULT-REPO-PASSWORD"
+      kp_default_repository: "idaho"
 
     tap_gui:
       service_type: ClusterIP
