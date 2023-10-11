@@ -32,7 +32,7 @@ tap_install:
       envoy:
         service:
           type: ClusterIP # This is set by default, but can be overridden by setting a different value.
-      
+
     tap_gui:
       service_type: ClusterIP
       ingressEnabled: "true"
