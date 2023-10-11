@@ -5,49 +5,34 @@ tap_install:
 
     profile: full
 
-    contour:
-      envoy:
-        service:
-          type: ClusterIP
-          
   shared:
     ingress_domain: "INGRESS-DOMAIN"
     ingress_issuer: # Optional, can denote a cert-manager.io/v1/ClusterIssuer of your choice. Defaults to "tap-ingress-selfsigned".
-
-    image_registry:
-      project_path: "SERVER-NAME/REPO-NAME"
-      username: "KP-DEFAULT-REPO-USERNAME"
-      password: "KP-DEFAULT-REPO-PASSWORD"
-
-    kubernetes_distribution: "openshift" # To be passed only for OpenShift. Defaults to "".
-    kubernetes_version: "K8S-VERSION"
 
     ca_cert_data: | # To be passed if using custom certificates.
         -----BEGIN CERTIFICATE-----
         MIIFXzCCA0egAwIBAgIJAJYm37SFocjlMA0GCSqGSIb3DQEBDQUAMEY...
         -----END CERTIFICATE-----
 
-  ceip_policy_disclosed: FALSE-OR-TRUE-VALUE # Installation fails if this is not set to true. Not a string.
+  ceip_policy_disclosed: true # Installation fails if this is not set to true. Not a string.
 
   #The above keys are minimum numbers of entries needed in tap-values.yaml to get a functioning TAP Full profile installation.
 
   #Below are the keys which may have default values set, but can be overridden.
 
-  profile: full # Can take iterate, build, run, view.
-
   supply_chain: basic # Can take testing, testing_scanning.
 
   ootb_supply_chain_basic: # Based on supply_chain set above, can be changed to ootb_supply_chain_testing, ootb_supply_chain_testing_scanning.
     registry:
-      server: "SERVER-NAME" # Takes the value from shared section above by default, but can be overridden by setting a different value.
-      repository: "REPO-NAME" # Takes the value from shared section above by default, but can be overridden by setting a different value.
+      server: "harbor.kal.automatestuff.io" # Takes the value from shared section above by default, but can be overridden by setting a different value.
+      repository: "idaho" # Takes the value from shared section above by default, but can be overridden by setting a different value.
     gitops:
       ssh_secret: "SSH-SECRET-KEY" # Takes "" as value by default; but can be overridden by setting a different value.
 
   contour:
     envoy:
       service:
-        type: LoadBalancer # This is set by default, but can be overridden by setting a different value.
+        type: ClusterIP # This is set by default, but can be overridden by setting a different value.
 
   buildservice:
     kp_default_repository: "KP-DEFAULT-REPO"
@@ -55,6 +40,9 @@ tap_install:
     kp_default_repository_password: "KP-DEFAULT-REPO-PASSWORD"
 
   tap_gui:
+    service_type: ClusterIP
+    ingressEnabled: "true"
+    ingressDomain: "k8s.demo"
     app_config:
       catalog:
         locations:
