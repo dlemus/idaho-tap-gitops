@@ -1,6 +1,3 @@
 tap_install:
   package_repository:
     oci_repository: harbor.kal.automatestuff.io/idaho/tap-packages
-  version:
-    package_repo_bundle_tag: "1.4.10"
-    package_version: "1.4.10"
