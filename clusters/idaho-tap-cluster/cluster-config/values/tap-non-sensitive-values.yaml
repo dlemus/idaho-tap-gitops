@@ -8,7 +8,7 @@ tap_install:
     contour:
       envoy:
         service:
-          type: LoadBalancer
+          type: ClusterIP
           
   shared:
     ingress_domain: "INGRESS-DOMAIN"
