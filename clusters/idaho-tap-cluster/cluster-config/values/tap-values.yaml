@@ -5,63 +5,63 @@ tap_install:
 
     profile: full
 
-  shared:
-    ingress_domain: "INGRESS-DOMAIN"
-    ingress_issuer: # Optional, can denote a cert-manager.io/v1/ClusterIssuer of your choice. Defaults to "tap-ingress-selfsigned".
+    shared:
+      ingress_domain: "INGRESS-DOMAIN"
+      ingress_issuer: # Optional, can denote a cert-manager.io/v1/ClusterIssuer of your choice. Defaults to "tap-ingress-selfsigned".
 
-    ca_cert_data: | # To be passed if using custom certificates.
-        -----BEGIN CERTIFICATE-----
-        MIIFXzCCA0egAwIBAgIJAJYm37SFocjlMA0GCSqGSIb3DQEBDQUAMEY...
-        -----END CERTIFICATE-----
+      ca_cert_data: | # To be passed if using custom certificates.
+          -----BEGIN CERTIFICATE-----
+          MIIFXzCCA0egAwIBAgIJAJYm37SFocjlMA0GCSqGSIb3DQEBDQUAMEY...
+          -----END CERTIFICATE-----
 
-  ceip_policy_disclosed: true # Installation fails if this is not set to true. Not a string.
+    ceip_policy_disclosed: true # Installation fails if this is not set to true. Not a string.
 
-  #The above keys are minimum numbers of entries needed in tap-values.yaml to get a functioning TAP Full profile installation.
+    #The above keys are minimum numbers of entries needed in tap-values.yaml to get a functioning TAP Full profile installation.
 
-  #Below are the keys which may have default values set, but can be overridden.
+    #Below are the keys which may have default values set, but can be overridden.
 
-  supply_chain: basic # Can take testing, testing_scanning.
+    supply_chain: basic # Can take testing, testing_scanning.
 
-  ootb_supply_chain_basic: # Based on supply_chain set above, can be changed to ootb_supply_chain_testing, ootb_supply_chain_testing_scanning.
-    registry:
-      server: "harbor.kal.automatestuff.io" # Takes the value from shared section above by default, but can be overridden by setting a different value.
-      repository: "idaho" # Takes the value from shared section above by default, but can be overridden by setting a different value.
-    gitops:
-      ssh_secret: "SSH-SECRET-KEY" # Takes "" as value by default; but can be overridden by setting a different value.
+    ootb_supply_chain_basic: # Based on supply_chain set above, can be changed to ootb_supply_chain_testing, ootb_supply_chain_testing_scanning.
+      registry:
+        server: "harbor.kal.automatestuff.io" # Takes the value from shared section above by default, but can be overridden by setting a different value.
+        repository: "idaho" # Takes the value from shared section above by default, but can be overridden by setting a different value.
+      gitops:
+        ssh_secret: "SSH-SECRET-KEY" # Takes "" as value by default; but can be overridden by setting a different value.
 
-  contour:
-    envoy:
-      service:
-        type: ClusterIP # This is set by default, but can be overridden by setting a different value.
+    contour:
+      envoy:
+        service:
+          type: ClusterIP # This is set by default, but can be overridden by setting a different value.
 
-  buildservice:
-    kp_default_repository: "KP-DEFAULT-REPO"
-    kp_default_repository_username: "KP-DEFAULT-REPO-USERNAME"
-    kp_default_repository_password: "KP-DEFAULT-REPO-PASSWORD"
+    buildservice:
+      kp_default_repository: "KP-DEFAULT-REPO"
+      kp_default_repository_username: "KP-DEFAULT-REPO-USERNAME"
+      kp_default_repository_password: "KP-DEFAULT-REPO-PASSWORD"
 
-  tap_gui:
-    service_type: ClusterIP
-    ingressEnabled: "true"
-    ingressDomain: "k8s.demo"
-    app_config:
-      catalog:
-        locations:
-          - type: url
-            target: https://GIT-CATALOG-URL/catalog-info.yaml
+    tap_gui:
+      service_type: ClusterIP
+      ingressEnabled: "true"
+      ingressDomain: "k8s.demo"
+      app_config:
+        catalog:
+          locations:
+            - type: url
+              target: https://GIT-CATALOG-URL/catalog-info.yaml
 
-  metadata_store:
-    ns_for_export_app_cert: "MY-DEV-NAMESPACE"
-    app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
+    metadata_store:
+      ns_for_export_app_cert: "MY-DEV-NAMESPACE"
+      app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
 
-  scanning:
-    metadataStore:
-      url: "" # Configuration is moved, so set this string to empty.
+    scanning:
+      metadataStore:
+        url: "" # Configuration is moved, so set this string to empty.
 
-  grype:
-    namespace: "MY-DEV-NAMESPACE"
-    targetImagePullSecret: "TARGET-REGISTRY-CREDENTIALS-SECRET"
+    grype:
+      namespace: "MY-DEV-NAMESPACE"
+      targetImagePullSecret: "TARGET-REGISTRY-CREDENTIALS-SECRET"
 
-  policy:
-    tuf_enabled: false # By default, TUF initialization and keyless verification are deactivated.
-  tap_telemetry:
-    customer_entitlement_account_number: "CUSTOMER-ENTITLEMENT-ACCOUNT-NUMBER" # (Optional) Identify data for creating Tanzu Application Platform usage reports.
+    policy:
+      tuf_enabled: false # By default, TUF initialization and keyless verification are deactivated.
+    tap_telemetry:
+      customer_entitlement_account_number: "CUSTOMER-ENTITLEMENT-ACCOUNT-NUMBER" # (Optional) Identify data for creating Tanzu Application Platform usage reports.

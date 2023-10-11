@@ -1,6 +1,6 @@
 ---
 git:
-  url: git@github.com:dlemus/idaho-tap-gitops.git
+  url: https://github.com/dlemus/idaho-tap-gitops.git
   ref: origin/main
   sub_path: clusters/idaho-tap-cluster/cluster-config
 tap_package_repository:
