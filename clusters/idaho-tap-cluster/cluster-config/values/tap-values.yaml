@@ -36,8 +36,6 @@ tap_install:
 
     tap_gui:
       service_type: ClusterIP
-      ingressEnabled: "true"
-      ingressDomain: "k8s.demo"
       app_config:
         catalog:
           locations:
@@ -55,6 +53,9 @@ tap_install:
     grype:
       namespace: "default"
       targetImagePullSecret: "harbor-registry-creds"
+
+    cnrs:
+      default_tls_secret: tap-install/tap-le-cert
 
     policy:
       tuf_enabled: false # By default, TUF initialization and keyless verification are deactivated.
