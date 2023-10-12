@@ -36,7 +36,7 @@ tap_install:
 
     tap_gui:
       metadataStoreAutoconfiguration: true
-      service_type: ClusterIP
+      service_type: NodePort
       ingressEnabled: "true"
       app_config:
         auth:
