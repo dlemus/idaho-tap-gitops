@@ -9,7 +9,6 @@ tap_install:
             kp_default_repository: ENC[AES256_GCM,data:oz5Tqkj12Ba6nPfSWbjXkSr71clpthTWPe6CDTdC9/4stYFiIA==,iv:hpOdgxxVnTw0I2siApeflf5XivynRKYxUKpShvudQMQ=,tag:/mu7biF/WuIyOfzdhxEkKw==,type:str]
             kp_default_repository_username: ENC[AES256_GCM,data:wk5YN5gn,iv:3VBeP0kxyYdsNNs1OZNHfAcw7V1+AQ+nVFSEH96kamk=,tag:FTOIJfI17XTIt2wsuqxR8w==,type:str]
             kp_default_repository_password: ENC[AES256_GCM,data:G7SCHzRMDaA=,iv:XnnbJw9vhB6o9WUpzT3on7fB9uEckpRMRirguKBx6kQ=,tag:wCs7XGKM2BfdigP4iJoYOQ==,type:str]
-            exclude_dependencies: ENC[AES256_GCM,data:mkfPfg==,iv:hKfLPGz2LeytR4LnGM3KH4EYNdQnmdOV6TtmBmgSTRE=,tag:IqMGNHta+q2T/z73vjSC5g==,type:bool]
 sops:
     kms: []
     gcp_kms: []
@@ -25,8 +24,8 @@ sops:
             SlkxSy9hUVB6bTBhU2NKSjFFWjlmNXcKNbCMTaa+aJ7AIYW1qMY8c9D27arfJykb
             NXwLb9zYaYviC+JC8C8SKkToJO8NmZU0ucfYO8Ae8zGH9ttylngFrA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-10-11T20:18:33Z"
-    mac: ENC[AES256_GCM,data:4j+R6CxUCmymkHcmCKRfiU8IxLMbG8Xxj5d8KW7zex4UlVGk7s/hdGZxHALKLclsrXgGYebEVoTzIwPGVfabok9MdQ3KGWMmL9Fc4h68q1lzPMtYzlLS7Tcj9fsn3DyZ4nQdbXNpAJ/ibu4W56TH7G3F2f9LDnU9+nng2h+Hy0Y=,iv:EwMkLJFIITfwwpPaf4l5MJc0OgDmKaUlj6kVqiLl/nE=,tag:R84d9UoBD86B62uoXPOWzw==,type:str]
+    lastmodified: "2023-10-13T07:05:48Z"
+    mac: ENC[AES256_GCM,data:OGlfIyZhkpC4SlaJR+VCoJITlxs5viQX8/ya84KHhAANtVO83Q1nxEg+B0ABJwMoO6TBYBtIzVYiAYq4ubi4IaV2R/jHNbeaLMKPlenlZzP/sQUbk4aws6iPw5W+X6gtarmyuVETwCzc1CzByp2uIb9mVHGGGHZxAL0IXHgZ1cI=,iv:Lc+u13LzklmNiokiZs7wm6gHUsCSKY5PJ2Syi/KVbOI=,tag:21ct37zBAHlO77aRNKv98Q==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.8.0
