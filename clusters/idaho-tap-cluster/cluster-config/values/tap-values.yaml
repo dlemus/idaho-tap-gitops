@@ -32,11 +32,10 @@ tap_install:
     contour:
       envoy:
         service:
-          type: ClusterIP # This is set by default, but can be overridden by setting a different value.
+          type: LoadBalancer # This is set by default, but can be overridden by setting a different value.
 
     tap_gui:
       metadataStoreAutoconfiguration: true
-      service_type: ClusterIP
       ingressEnabled: "true"
       app_config:
         auth:
