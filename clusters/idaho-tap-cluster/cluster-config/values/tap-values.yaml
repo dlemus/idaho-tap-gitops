@@ -32,11 +32,11 @@ tap_install:
     contour:
       envoy:
         service:
-          type: NodePort # This is set by default, but can be overridden by setting a different value.
+          type: ClusterIP # This is set by default, but can be overridden by setting a different value.
 
     tap_gui:
       metadataStoreAutoconfiguration: true
-      service_type: NodePort
+      service_type: ClusterIP
       ingressEnabled: "true"
       app_config:
         auth:
@@ -51,7 +51,7 @@ tap_install:
 
     metadata_store:
       ns_for_export_app_cert: "tap-apps"
-      app_service_type: NodePort # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
+      app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
 
     scanning:
       metadataStore:
