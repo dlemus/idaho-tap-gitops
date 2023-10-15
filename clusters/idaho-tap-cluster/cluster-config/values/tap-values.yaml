@@ -58,7 +58,7 @@ tap_install:
       controller: true
 
     metadata_store:
-      ns_for_export_app_cert: "tap-apps"
+      ns_for_export_app_cert: "*"
       app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
 
     scanning:
@@ -66,7 +66,7 @@ tap_install:
         url: "" # Configuration is moved, so set this string to empty.
 
     grype:
-      namespace: "default"
+      namespace: "developer-ns"
       targetImagePullSecret: "registry-credentials"
 
     cnrs:
