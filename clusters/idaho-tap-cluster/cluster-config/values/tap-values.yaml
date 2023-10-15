@@ -1,8 +1,6 @@
 tap_install:
   values:
     excluded_packages:
-    - apis.apps.tanzu.vmware.com
-    - api-portal.tanzu.vmware.com
     - eventing.tanzu.vmware.com
     - learningcenter.tanzu.vmware.com
     - workshops.learningcenter.tanzu.vmware.com
