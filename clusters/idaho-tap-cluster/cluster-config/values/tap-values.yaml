@@ -20,14 +20,23 @@ tap_install:
 
     #Below are the keys which may have default values set, but can be overridden.
 
-    supply_chain: basic # Can take testing, testing_scanning.
+    #supply_chain: basic # Can take testing, testing_scanning.
 
-    ootb_supply_chain_basic: # Based on supply_chain set above, can be changed to ootb_supply_chain_testing, ootb_supply_chain_testing_scanning.
+    #ootb_supply_chain_basic: # Based on supply_chain set above, can be changed to ootb_supply_chain_testing, ootb_supply_chain_testing_scanning.
+    #  registry:
+    #    server: "harbor.kal.automatestuff.io" # Takes the value from shared section above by default, but can be overridden by setting a different value.
+    #    repository: "idaho/supply-chain" # Takes the value from shared section above by default, but can be overridden by setting a different value.
+    #  gitops:
+    #    ssh_secret: "" # Takes "" as value by default; but can be overridden by setting a different value.
+
+    supply_chain: testing_scanning
+
+    ootb_supply_chain_testing_scanning:
       registry:
-        server: "harbor.kal.automatestuff.io" # Takes the value from shared section above by default, but can be overridden by setting a different value.
-        repository: "idaho/supply-chain" # Takes the value from shared section above by default, but can be overridden by setting a different value.
+        repository: "idaho/supply-chain"
+        server: "harbor.kal.automatestuff.io"
       gitops:
-        ssh_secret: "" # Takes "" as value by default; but can be overridden by setting a different value.
+        ssh_secret: ""
 
     contour:
       envoy:
@@ -58,7 +67,7 @@ tap_install:
 
     grype:
       namespace: "default"
-      targetImagePullSecret: "harbor-registry-creds"
+      targetImagePullSecret: "registry-credentials"
 
     cnrs:
       default_tls_secret: tap-install/tap-le-cert
