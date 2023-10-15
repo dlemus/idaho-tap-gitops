@@ -45,6 +45,7 @@ tap_install:
 
     tap_gui:
       metadataStoreAutoconfiguration: true
+      service_type: ClusterIP
       ingressEnabled: "true"
       app_config:
         auth:
