@@ -44,7 +44,7 @@ tap_install:
           type: LoadBalancer # This is set by default, but can be overridden by setting a different value.
 
     tap_gui:
-      metadataStoreAutoconfiguration: true
+      #metadataStoreAutoconfiguration: true
       service_type: ClusterIP
       ingressEnabled: "true"
       app_config:
@@ -61,6 +61,7 @@ tap_install:
     metadata_store:
       ns_for_export_app_cert: "*"
       app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
+      ingress_enabled: true
 
     scanning:
       metadataStore:
