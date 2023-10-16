@@ -86,8 +86,5 @@ tap_install:
       namespace: "developer-ns"
       targetImagePullSecret: "registry-credentials"
 
-    cnrs:
-      default_tls_secret: tap-install/tap-le-cert
-
     policy:
       tuf_enabled: false # By default, TUF initialization and keyless verification are deactivated.
