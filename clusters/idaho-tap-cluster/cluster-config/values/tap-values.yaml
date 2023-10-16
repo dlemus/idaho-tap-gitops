@@ -9,6 +9,7 @@ tap_install:
 
     shared:
       ingress_domain: "k8s.demo"
+      ingress_issuer: ""
 
       #ca_cert_data: | # To be passed if using custom certificates.
 
@@ -42,18 +43,13 @@ tap_install:
           type: LoadBalancer # This is set by default, but can be overridden by setting a different value.
 
     tap_gui:
-      metadataStoreAutoconfiguration: "true"
+      metadataStoreAutoconfiguration: true
+      tls:
+        namespace: metadata-store
+        secretName: app-tls-cert
       service_type: ClusterIP
       ingressEnabled: "true"
       app_config:
-        proxy:
-          /metadata-store:
-            target: https://metadata-store-app.metadata-store:8443/api/v1
-            changeOrigin: true
-            secure: false
-            headers:
-              Authorization: "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkpPcU1pYzlWcGhSQlZkdkN4T2oyTmxaYTl2dXNuUzdKeGpHZm5iNkZpWXcifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJtZXRhZGF0YS1zdG9yZSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJtZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJtZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImMzMDQ2MjgzLTUzNTYtNDI0My04YjUwLTBiODVhMmNmZmM5YyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDptZXRhZGF0YS1zdG9yZTptZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCJ9.Pyk9sdsTudMeRskzusl3m2ERipzvV1cO_5L00zpkYIgOKtsDuDlg3cq3F4QdxhbxByBiNdYg1HYUekJgY2GbrBgyqdZjyXG7dNOozMD-FaJIR7mboLhRv2pSYbbU3R6T5aKj1MThanWU1ToyfXh_D6njqRiy2EYEQdm6N4vqEMBcUIRbJC_7p4b5q22XC8saNpeP_hyUuA1SkKZjNeltv4Xi8gWlxk8fkCWwMqod-b0faWucmr6iCthUCRy5Ri__RO1MaydUJUS-6TMKtNbWwkec5iFaTATjMmE1ugfsVTnv71P82he8l9na1TYQmLA-c6jjLyXPPLPX6KsHFcxbFA"
-              X-Custom-Source: project-star      
         auth:
           allowGuestAccess: true
         catalog:
@@ -62,28 +58,20 @@ tap_install:
               target: https://github.com/dlemus/tap-catalog/blob/master/catalog-info.yaml
 
     namespace_provisioner:
-      controller: true
-      additional_sources:
-        - git:
-            ref: origin/main
-            subPath: ns-provisioner-samples/testing-scanning-supplychain-parameterized
-            url: https://github.com/vmware-tanzu/application-accelerator-samples.git
-          path: _ytt_lib/testing-scanning-supplychain-parameterized-setup
-      parameter_prefixes:
-        - tap.tanzu.vmware.com
+      controller: false
 
     metadata_store:
       ns_for_export_app_cert: developer
       app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
-      ingress_enabled: "true"
-      ingress_domain: "k8s.demo"
+
+    cnrs:
+      default_tls_secret: metadata-store/app-tls-cert
 
     scanning:
       metadataStore:
         url: "" # Configuration is moved, so set this string to empty.
 
     grype:
-      namespace: developer
       targetImagePullSecret: "registries-credentials"
         
     policy:
