@@ -42,8 +42,8 @@ tap_install:
           type: LoadBalancer # This is set by default, but can be overridden by setting a different value.
 
     tap_gui:
-      #metadataStoreAutoconfiguration: true
-      service_type: "ClusterIP"
+      metadataStoreAutoconfiguration: "true"
+      service_type: ClusterIP
       ingressEnabled: "true"
       app_config:
         proxy:
@@ -73,8 +73,8 @@ tap_install:
         - tap.tanzu.vmware.com
 
     metadata_store:
-      ns_for_export_app_cert: "developer-ns"
-      app_service_type: "ClusterIP" # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
+      ns_for_export_app_cert: developer
+      app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
       ingress_enabled: "true"
       ingress_domain: "k8s.demo"
 
@@ -83,11 +83,8 @@ tap_install:
         url: "" # Configuration is moved, so set this string to empty.
 
     grype:
-      namespace: "developer-ns"
-      targetImagePullSecret: "registry-credentials"
-      caSecret:
-        name: app-tls-cert
-        importFromNamespace: "metadata-store"
+      namespace: developer
+      targetImagePullSecret: "registries-credentials"
         
     policy:
       tuf_enabled: false # By default, TUF initialization and keyless verification are deactivated.
