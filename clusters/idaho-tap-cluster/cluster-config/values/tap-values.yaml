@@ -60,10 +60,8 @@ tap_install:
       controller: true
 
     metadata_store:
-      ns_for_export_app_cert: developer
+      ns_for_export_app_cert: "*"
       app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
-      ingress_enabled: "true"
-      ingress_domain: "k8s.demo"
 
     cnrs:
       default_tls_secret: metadata-store/app-tls-cert
@@ -73,7 +71,6 @@ tap_install:
         url: "" # Configuration is moved, so set this string to empty.
 
     grype:
-      namespace: developer
       targetImagePullSecret: "registries-credentials"
         
     policy:
