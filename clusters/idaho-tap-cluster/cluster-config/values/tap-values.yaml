@@ -43,7 +43,7 @@ tap_install:
 
     tap_gui:
       #metadataStoreAutoconfiguration: true
-      service_type: ClusterIP
+      service_type: "ClusterIP"
       ingressEnabled: "true"
       app_config:
         proxy:
@@ -85,6 +85,9 @@ tap_install:
     grype:
       namespace: "developer-ns"
       targetImagePullSecret: "registry-credentials"
-
+      caSecret:
+        name: app-tls-cert
+        importFromNamespace: "metadata-store"
+        
     policy:
       tuf_enabled: false # By default, TUF initialization and keyless verification are deactivated.
