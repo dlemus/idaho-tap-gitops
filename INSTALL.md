@@ -15,6 +15,7 @@
         - https://github.com/getsops/sops/releases
     - age
         - https://github.com/FiloSottile/age#installation
+        - get Age Key from Tanzu SE
     - Tanzu CLI with plugins, setup below for after install (optional)
         - tanzu context create
         - tanzu plugin install --group vmware-tap/default:v1.4.10
