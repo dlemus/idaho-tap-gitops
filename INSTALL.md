@@ -17,6 +17,7 @@
         - https://github.com/FiloSottile/age#installation
         - get Age Key from Tanzu SE
     - Tanzu CLI with plugins, setup below for after install (optional)
+        - https://docs.vmware.com/en/VMware-Tanzu-CLI/1.0/tanzu-cli/index.html
         - tanzu context create
         - tanzu plugin install --group vmware-tap/default:v1.4.10
 
