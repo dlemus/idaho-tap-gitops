@@ -51,11 +51,7 @@ tap_install:
       app_config:           
         auth:
           allowGuestAccess: true
-        catalog:
-          locations:
-            - type: url
-              target: https://github.com/dlemus/tanzu-java-web-app/blob/main/catalog-info.yaml
-
+          
     namespace_provisioner:
       controller: true
 
