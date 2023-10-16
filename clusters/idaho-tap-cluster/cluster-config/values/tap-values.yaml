@@ -48,21 +48,13 @@ tap_install:
         secretName: app-tls-cert
       service_type: ClusterIP
       ingressEnabled: "true"
-      app_config:
-        proxy:
-          /metadata-store:
-            target: https://metadata-store-app.metadata-store:8443/api/v1
-            changeOrigin: true
-            secure: false
-            headers:
-              Authorization: "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6InJTcGo1dzNJNWxuZUczRUF1cTZhb0wyNDBiejc0M0FVc3FqSjQ1U1VFN0EifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJtZXRhZGF0YS1zdG9yZSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJtZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJtZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjY2YTUxZWQwLTIwZTQtNGFkYy05Zjg3LTRkYWZiYWJiOGZkZiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDptZXRhZGF0YS1zdG9yZTptZXRhZGF0YS1zdG9yZS1yZWFkLXdyaXRlLWNsaWVudCJ9.b9k_DB_-e9lf_1ggMhCf3V-pf9qAXanaShkFV4gvLmTay_rNRAOz7cAxpubkiG4NNs-Tc2vfpN372cgK0fSffYGKxAWwk8WATHY4GstdvLT--9vS5Ti-Xcf8mEkXnDSrHe2ZZNfZEq5MwzeIR44ATGPPJe-FMpaAmNOlxbvWexP9RUKgIB2BiCd_I_4nI9wTCaQcBaLkhU5_7W2ihm2kTJROnfaN_C-BYhvPYat2QOvp1t7cnFkNWsdMa6ayI0KnPNj1mlT5XsAtrLiDdsttnaBduoIfocAz_U1fzjj2zpwRaEDWgM2hJyd0PiSVpRxAUky39klnU9PA5pDS4ZVQkg"
-              X-Custom-Source: project-star            
+      app_config:           
         auth:
           allowGuestAccess: true
         catalog:
           locations:
             - type: url
-              target: https://github.com/dlemus/tap-catalog/blob/master/catalog-info.yaml
+              target: https://github.com/dlemus/tanzu-java-web-app/blob/main/catalog-info.yaml
 
     namespace_provisioner:
       controller: true
