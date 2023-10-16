@@ -19,7 +19,6 @@
         - tanzu context create
         - tanzu plugin install --group vmware-tap/default:v1.4.10
 
-3. 
 3. Create a cluster with 1 master and 2 workload nodes. Workload should have 8vCPU and 8GB of ram
 
 4. Install Cluster Essentials:
