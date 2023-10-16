@@ -9,7 +9,6 @@ tap_install:
 
     shared:
       ingress_domain: "k8s.demo"
-      ingress_issuer: ""
 
       #ca_cert_data: | # To be passed if using custom certificates.
 
@@ -58,11 +57,13 @@ tap_install:
               target: https://github.com/dlemus/tap-catalog/blob/master/catalog-info.yaml
 
     namespace_provisioner:
-      controller: false
+      controller: true
 
     metadata_store:
       ns_for_export_app_cert: developer
       app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
+      ingress_enabled: "true"
+      ingress_domain: "k8s.demo"
 
     cnrs:
       default_tls_secret: metadata-store/app-tls-cert
@@ -72,6 +73,7 @@ tap_install:
         url: "" # Configuration is moved, so set this string to empty.
 
     grype:
+      namespace: developer
       targetImagePullSecret: "registries-credentials"
         
     policy:
