@@ -10,6 +10,7 @@ tap_install:
     shared:
       ingress_domain: "k8s.demo"
 
+      # ad ca-bundle
       ca_cert_data: |
         -----BEGIN CERTIFICATE-----
         MIIE6jCCA9KgAwIBAgIQCjUI1VwpKwF9+K1lwA/35DANBgkqhkiG9w0BAQsFADBh
