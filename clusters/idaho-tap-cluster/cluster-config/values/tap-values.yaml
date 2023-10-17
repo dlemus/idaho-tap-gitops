@@ -8,7 +8,7 @@ tap_install:
     profile: full
 
     shared:
-      ingress_domain: "k8s.demo"
+      ingress_domain: "its-tap-non.k.idaho.gov"
 
       # ad ca-bundle
       ca_cert_data: |
